@@ -42,25 +42,25 @@
 
 /** The name of the database for WordPress */
 
-define('DB_NAME', 'database_name_here');
+define('DB_NAME', 'wordpress');
 
 
 
 /** MySQL database username */
 
-define('DB_USER', 'username_here');
+define('DB_USER', 'root');
 
 
 
 /** MySQL database password */
 
-define('DB_PASSWORD', 'password_here');
+define('DB_PASSWORD', 'password');
 
 
 
 /** MySQL hostname */
 
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'mysql');
 
 
 
@@ -94,21 +94,21 @@ define('DB_COLLATE', '');
 
  */
 
-define('AUTH_KEY',         'put your unique phrase here');
+define('AUTH_KEY',         'cae5ca6f49278fa9cb5d41b195a453d832bfb90b');
 
-define('SECURE_AUTH_KEY',  'put your unique phrase here');
+define('SECURE_AUTH_KEY',  'd9b4cf4bf340cd5c8ce1aa995efd1eb297deaa5a');
 
-define('LOGGED_IN_KEY',    'put your unique phrase here');
+define('LOGGED_IN_KEY',    '820834295f5defa01fcfe283a04f06ffdc7e75aa');
 
-define('NONCE_KEY',        'put your unique phrase here');
+define('NONCE_KEY',        'bccd3217f557c3d9a9fbd6b0ca5d1df421008410');
 
-define('AUTH_SALT',        'put your unique phrase here');
+define('AUTH_SALT',        'e10bc5051321c6837d12b6a22d2bcc61fa8ecdcd');
 
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
+define('SECURE_AUTH_SALT', 'ba73d04c3523f775e63732f709974fb7acfcc0d8');
 
-define('LOGGED_IN_SALT',   'put your unique phrase here');
+define('LOGGED_IN_SALT',   '4bd1ce7d7730ade75704972838ce23aa3d7fc0c9');
 
-define('NONCE_SALT',       'put your unique phrase here');
+define('NONCE_SALT',       'f2be20f7713ab40ac24f4e8cddead6a2c3966d62');
 
 
 
@@ -159,6 +159,12 @@ $table_prefix  = 'wp_';
 define('WP_DEBUG', false);
 
 
+
+// If we're behind a proxy server and using HTTPS, we need to alert Wordpress of that fact
+// see also http://codex.wordpress.org/Administration_Over_SSL#Using_a_Reverse_Proxy
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+	$_SERVER['HTTPS'] = 'on';
+}
 
 /* That's all, stop editing! Happy blogging. */
 
